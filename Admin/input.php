@@ -1,14 +1,13 @@
 <?php
 session_start();
 
-if($_SESSION['password']=='')
-{
-    header("location:login.php");
+if ($_SESSION['password'] == '') {
+  header("location:login.php");
 }
 include 'koneksi.php';
 ob_start()
 
- ?>
+?>
 
 
 
@@ -107,10 +106,10 @@ ob_start()
           <ul class="navbar-nav ml-auto">
 
 
-<?php
+            <?php
             $nama = mysqli_query($conn, "select * from about");
             $profile = mysqli_fetch_array($nama);
-?>
+            ?>
 
 
 
@@ -118,18 +117,18 @@ ob_start()
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <?php
-   $sss = mysqli_query($conn, "select * from admin");
-   $rrr = mysqli_fetch_array($sss);
+            $sss = mysqli_query($conn, "select * from admin");
+            $rrr = mysqli_fetch_array($sss);
 
 
-             ?>
+            ?>
 
             <!-- Nav Item - User Information -->
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profile['nama'] ?></span>
-                <img class="img-profile rounded-circle" src=" penampung/<?php echo$profile['foto'] ?>" alt="Profile"  width="100px" height="100px">
+                <img class="img-profile rounded-circle" src=" penampung/<?php echo $profile['foto'] ?>" alt="Profile" width="100px" height="100px">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -143,7 +142,7 @@ ob_start()
                 </a>
                 <a class="dropdown-item" href="change.php?id=<?php echo $rrr['id']; ?>">
                   <i class="fas fa-ruler-horizontal fa-sm fa-fw mr-2 text-gray-400"></i>
-                Ganti Password
+                  Ganti Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
@@ -157,105 +156,105 @@ ob_start()
         <!-- End of Topbar -->
 
 
-<!--ini bagian konten-->
+        <!--ini bagian konten-->
 
-<!-- Page Heading -->
-
-
-  <div class="row mr-3">
-    <div class="col-md-10">
-
-    </div>
-<div class="col-md-2 mb-3">
-  <a href="export_excel.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-</div>
-</div>
+        <!-- Page Heading -->
 
 
+        <div class="row mr-3">
+          <div class="col-md-10">
 
-<!-- Content Row -->
-<form name='kirim'  method='post'>
-  <div class="card shadow  ml-4 mr-4">
-<div class="card-header py-3">
-  <h1 class="h3 mb-0 text-gray-800">Data Barang Terjual</h1>
-</div>
-<div class="row ml-5 mb-2">
-  <div class="col-md-5 col-sm-12 col-xs-12">
-    <p><b>Tanggal:</b></p>
-  <input class="form-control" type="date" name='tanggal' required>
-  </div>
-
-  <div class="col-md-5 col-sm-12 col-xs-12">
-    <p><b>Nama Barang:</b></p>
-    <select class="form-control" name='jenis' required>
-    <option selected disabled value="">Nama Produk</option>
-      <?php
-       $brg=mysqli_query($conn, "select * from masuk");
-       while($b=mysqli_fetch_array($brg)){
-         ?>
-      <option value="<?php echo $b['nama']; ?>"><?php echo $b['nama']; ?></option>
-
-         <?php } ?>
-    </select>
-  </div>
-</div>
-
-<div class="row ml-5 mb-4">
-
-  <div class="col-md-5 col-sm-12 col-xs-12">
-    <p><b>Jumlah Barang:</b></p>
-  <input class="form-control" type="number" name='jumlah' placeholder="Jumlah Barang" required>
-  </div>
-
-<div class="col-md-5 col-sm-12 col-xs-12 mt-4">
-<button type="submit" class="btn btn-primary btn-lg btn-block" name='kirim'>Kirim</button>
-
-
-</div>
-
-
-</div>
+          </div>
+          <div class="col-md-2 mb-3">
+            <a href="export_excel.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          </div>
+        </div>
 
 
 
+        <!-- Content Row -->
+        <form name='kirim' method='post'>
+          <div class="card shadow  ml-4 mr-4">
+            <div class="card-header py-3">
+              <h1 class="h3 mb-0 text-gray-800">Data Barang Terjual</h1>
+            </div>
+            <div class="row ml-5 mb-2">
+              <div class="col-md-5 col-sm-12 col-xs-12">
+                <p><b>Tanggal:</b></p>
+                <input class="form-control" type="date" name='tanggal' required>
+              </div>
 
-</form>
+              <div class="col-md-5 col-sm-12 col-xs-12">
+                <p><b>Nama Barang:</b></p>
+                <select class="form-control" name='jenis' required>
+                  <option selected disabled value="">Nama Produk</option>
+                  <?php
+                  $brg = mysqli_query($conn, "select * from masuk");
+                  while ($b = mysqli_fetch_array($brg)) {
+                  ?>
+                    <option value="<?php echo $b['nama']; ?>"><?php echo $b['nama']; ?></option>
 
-<?php
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+
+            <div class="row ml-5 mb-4">
+
+              <div class="col-md-5 col-sm-12 col-xs-12">
+                <p><b>Jumlah Barang:</b></p>
+                <input class="form-control" type="number" name='jumlah' placeholder="Jumlah Barang" required>
+              </div>
+
+              <div class="col-md-5 col-sm-12 col-xs-12 mt-4">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" name='kirim'>Kirim</button>
+
+
+              </div>
+
+
+            </div>
 
 
 
 
+        </form>
 
-if(isset($_POST['kirim'])){
-
-  $tanggal = htmlspecialchars($_POST['tanggal']);
-  $jenis = htmlspecialchars($_POST['jenis']);
-  $jumlah = htmlspecialchars($_POST['jumlah']);
-  $data= mysqli_query($conn, "select * from masuk where nama = '$jenis'");
-  $di = mysqli_fetch_array($data);
-  $harga = $di['hargaJ'];
-  $untung = $harga * $jumlah;
+        <?php
 
 
 
 
 
+        if (isset($_POST['kirim'])) {
 
-$manggil=mysqli_query($conn, "select * from masuk where nama = '$jenis'");
-$total =mysqli_fetch_array($manggil);
-$jadi = $total['JumlahB'];
-$pengurangan = $jadi - $jumlah;
-
-
-
-
-    if($pengurangan >= 0){
-
+          $tanggal = htmlspecialchars($_POST['tanggal']);
+          $jenis = htmlspecialchars($_POST['jenis']);
+          $jumlah = htmlspecialchars($_POST['jumlah']);
+          $data = mysqli_query($conn, "select * from masuk where nama = '$jenis'");
+          $di = mysqli_fetch_array($data);
+          $harga = $di['hargaJ'];
+          $untung = $harga * $jumlah;
 
 
 
-      $insert = mysqli_query($conn, "INSERT INTO keluar VALUES (
+
+
+
+          $manggil = mysqli_query($conn, "select * from masuk where nama = '$jenis'");
+          $total = mysqli_fetch_array($manggil);
+          $jadi = $total['JumlahB'];
+          $pengurangan = $jadi - $jumlah;
+
+
+
+
+          if ($pengurangan >= 0) {
+
+
+
+
+            $insert = mysqli_query($conn, "INSERT INTO keluar VALUES (
        NULL,
       '$tanggal',
       '$jenis',
@@ -263,226 +262,216 @@ $pengurangan = $jadi - $jumlah;
       '$jumlah'
         )");
 
-    $update = mysqli_query($conn, "UPDATE masuk SET JumlahB = '$pengurangan' WHERE nama = '$jenis'");
+            $update = mysqli_query($conn, "UPDATE masuk SET JumlahB = '$pengurangan' WHERE nama = '$jenis'");
 
-if($insert AND $update){
+            if ($insert and $update) {
 
-  echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-   echo "<div class='alert alert-primary mt-4 ml-5' role='alert'>";
-  echo "<p><center>Memasukan Penjualan Berhasil</center></p>";
-   echo   "</div>";
-   echo "</div>";
+              echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+              echo "<div class='alert alert-primary mt-4 ml-5' role='alert'>";
+              echo "<p><center>Memasukan Penjualan Berhasil</center></p>";
+              echo   "</div>";
+              echo "</div>";
+            }
+          } else {
+            echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+            echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+            echo "<p><center>Memasukan Penjualan Gagal</center></p>";
+            echo   "</div>";
+            echo "</div>";
+          }
+        }
+        ?>
+        <?php
 
+        $jumlah_produk = mysqli_query($conn, "SELECT COUNT(*) as id from keluar");
+        $row = mysqli_fetch_array($jumlah_produk);
+        $jum = $row['id'];
 
-}
 
+        ?>
 
 
- }else{
-   echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-      echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-     echo "<p><center>Memasukan Penjualan Gagal</center></p>";
-      echo   "</div>";
-      echo "</div>";
 
- }
 
+        <div class="row mt-5 mr-4">
+          <div class="col-md-8">
+            <?php
 
-}
- ?>
- <?php
+            $hmm = $jum;
+            $hal = 10;
+            $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+            $start = ($page - 1) * $hal;
 
- $jumlah_produk=mysqli_query($conn,"SELECT COUNT(*) as id from keluar");
- $row = mysqli_fetch_array($jumlah_produk);
- $jum = $row['id'];
 
+            ?>
+          </div>
 
- ?>
+          <div class="col-md-4">
 
+          </div>
+        </div>
 
+        <?php
+        if ($jum <= 0) {
+          echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+          echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+          echo "<p><center><b>Data Anda Masih Kosong</b></center></p>";
+          echo   "</div>";
+          echo "</div>";
+        }
+        ?>
+        <div class="col-md-12 col-sm-12 col-xs-12  mt-5">
+          <div class="table-responsive service">
+            <table class="table table-bordered table-hover  mt-3 text-nowrap css-serial">
+              <thead>
+                <tr>
 
+                  <th scope="col">No</th>
+                  <th scope="col">Tanggal</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Jumlah Barang</th>
+                  <th scope="col">Opsi</th>
 
-<div class="row mt-5 mr-4">
-  <div class="col-md-8">
-    <?php
+                </tr>
 
-    $hmm= $jum;
-    $hal= 10;
-    $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
-    $start = ($page - 1) * $hal;
+              </thead>
 
+              <?php
 
-     ?>
-  </div>
+              $cek = mysqli_query($conn, "select * from keluar limit $start, $hal");
 
-  <div class="col-md-4">
+              while ($isi = mysqli_fetch_array($cek)) {
+              ?>
 
-  </div>
-</div>
+                <tbody>
+                  <tr>
+                    <th scope="row"><?php echo $isi['id'] ?></th>
+                    <td><?php echo $isi['tanggal'] ?></td>
+                    <td><?php echo $isi['namabarang'] ?></td>
+                    <td><?php echo "" . number_format($isi['hargaU']) . "" ?></td>
+                    <td><?php echo $isi['JumlahB'] ?></td>
+                    <td><a href="edit_input.php?id=<?php echo $isi['id']; ?>"><button type="button" class="btn btn-primary">Edit</button></a>&nbsp;<a href="hapus_input.php?id=<?php echo $isi['id']; ?>"><button type="button" class="btn btn-warning">Hapus</button></a></td>
+                  </tr>
+                </tbody>
+              <?php }  ?>
+            </table>
 
-<?php
-if($jum <= 0){
-  echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-     echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-    echo "<p><center><b>Data Anda Masih Kosong</b></center></p>";
-     echo   "</div>";
-     echo "</div>";
-}
-?>
- <div class="col-md-12 col-sm-12 col-xs-12  mt-5">
-   <div class="table-responsive service">
-   <table class="table table-bordered table-hover  mt-3 text-nowrap css-serial">
-   <thead>
-     <tr>
+            <div class="row">
 
-       <th scope="col">No</th>
-       <th scope="col">Tanggal</th>
-       <th scope="col">Nama</th>
-       <th scope="col">Total</th>
-       <th scope="col">Jumlah Barang</th>
-       <th scope="col">Opsi</th>
+              <div class="col-md-5">
 
-     </tr>
+              </div>
 
-   </thead>
+              <div class="col-md-5">
 
-   <?php
+              </div>
 
-   $cek=mysqli_query($conn, "select * from keluar limit $start, $hal");
+              <?php
+              $cep = mysqli_query($conn, "select * from keluar");
+              $tesd = mysqli_num_rows($cep);
 
-   while($isi=mysqli_fetch_array($cek)){
-     ?>
 
-   <tbody>
-     <tr>
-       <th scope="row"><?php echo $isi['id'] ?></th>
-       <td><?php echo $isi['tanggal'] ?></td>
-       <td><?php echo $isi['namabarang'] ?></td>
-       <td><?php echo "". number_format($isi['hargaU'])."" ?></td>
-       <td><?php echo $isi['JumlahB'] ?></td>
-       <td><a href="edit_input.php?id=<?php echo $isi['id']; ?>"><button type="button" class="btn btn-primary">Edit</button></a>&nbsp;<a href="hapus_input.php?id=<?php echo $isi['id']; ?>"><button type="button" class="btn btn-warning">Hapus</button></a></td>
-     </tr>
-       </tbody>
-       <?php }  ?>
- </table>
+              if ($tesd > 0) {
+                echo "<div class='col-md-2'>";
+                echo " <a href='hapus_all_input.php'><button type='button' class='btn btn-danger'>Hapus Semua</button></a>";
+                echo "</div>";
+              } else {
+              } ?>
+            </div>
 
- <div class="row">
 
-     <div class="col-md-5">
 
-     </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
 
-     <div class="col-md-5">
+                <?php
+                for ($x = 1; $x <= $hal; $x++) {
+                ?>
+                  <li class="page-item"><a class="page-link" href="?page=<?php echo $x ?>"><?php echo $x ?></a></li>
+                <?php
+                }
 
-     </div>
+                ?>
 
-     <?php
-$cep = mysqli_query($conn, "select * from keluar");
-$tesd= mysqli_num_rows($cep);
 
 
-if($tesd > 0 ){
-    echo "<div class='col-md-2'>";
-    echo " <a href='hapus_all_input.php'><button type='button' class='btn btn-danger'>Hapus Semua</button></a>";
-     echo "</div>";
-}else{
+              </ul>
+            </nav>
+          </div>
+        </div>
 
-
-}?>
- </div>
-
-
-
- <nav aria-label="Page navigation example">
- <ul class="pagination">
-
-   <?php
-   for($x=1; $x<=$hal ;$x++){
-     ?>
-     <li class="page-item"><a class="page-link" href="?page=<?php echo $x ?>"><?php echo $x ?></a></li>
-     <?php
-   }
-
-   ?>
-
-
-
- </ul>
- </nav>
-</div>
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-  <div class="container my-auto">
-    <div class="copyright text-center my-auto">
-      <span><p class="mb-1">Copyright &copy; <a href="https://github.com/Faiznurullah" style="text-decoration: none;"><b>Faiz Nurullah</b></a></p></span><br>
-    </div>
-  </div>
-</footer>
-</div>
-
-</div>
-</div>
-
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-<i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
       </div>
-      <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-        <a class="btn btn-primary" href="logout.php">Keluar</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <p class="mb-1">Copyright &copy; <a href="https://github.com/FrindiM" style="text-decoration: none;"><b>Frindi Mangimbulude</b></a></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  </div>
+  </div>
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-primary" href="logout.php">Keluar</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

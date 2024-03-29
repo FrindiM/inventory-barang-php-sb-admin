@@ -1,11 +1,8 @@
-
-
 <?php
 session_start();
 
-if($_SESSION['password']=='')
-{
-    header("location:login.php");
+if ($_SESSION['password'] == '') {
+  header("location:login.php");
 }
 include 'koneksi.php';
 error_reporting(0);
@@ -16,7 +13,7 @@ $profile = mysqli_fetch_array($t);
 ob_start()
 
 
- ?>
+?>
 <!doctype html>
 <html lang="en">
 
@@ -141,18 +138,18 @@ ob_start()
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <?php
-   $sss = mysqli_query($conn, "select * from admin");
-   $rrr = mysqli_fetch_array($sss);
+            $sss = mysqli_query($conn, "select * from admin");
+            $rrr = mysqli_fetch_array($sss);
 
 
-             ?>
+            ?>
 
             <!-- Nav Item - User Information -->
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profile['nama'] ?></span>
-                <img class="img-profile rounded-circle" src=" penampung/<?php echo$profile['foto'] ?>" alt="Profile"  width="100px" height="100px">
+                <img class="img-profile rounded-circle" src=" penampung/<?php echo $profile['foto'] ?>" alt="Profile" width="100px" height="100px">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -166,7 +163,7 @@ ob_start()
                 </a>
                 <a class="dropdown-item" href="change.php?id=<?php echo $rrr['id']; ?>">
                   <i class="fas fa-ruler-horizontal fa-sm fa-fw mr-2 text-gray-400"></i>
-                Ganti Password
+                  Ganti Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
@@ -180,109 +177,107 @@ ob_start()
         <!-- End of Topbar -->
 
 
-      <?php
-        $id_brg= ($_GET['id']);
+        <?php
+        $id_brg = ($_GET['id']);
         $ggl = !$id_brg;
-        if($ggl){
+        if ($ggl) {
 
-            echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5 mt-5'>";
-               echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-              echo "<p><center>Maaf Data Ini Tidak Tersedia</center></p>";
-               echo   "</div>";
-               echo "</div>";
-
-        }else{
-        $det=mysqli_query($conn, "select * from masuk where id='$id_brg'");
-        while($d=mysqli_fetch_array($det)){
+          echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5 mt-5'>";
+          echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+          echo "<p><center>Maaf Data Ini Tidak Tersedia</center></p>";
+          echo   "</div>";
+          echo "</div>";
+        } else {
+          $det = mysqli_query($conn, "select * from masuk where id='$id_brg'");
+          while ($d = mysqli_fetch_array($det)) {
         ?>
 
-        <div class="row ml-5">
-          <div class="col-md-10 col-sm-12 col-xs-12">
-            <h2><center>Pengeditan Data</center></h2>
+            <div class="row ml-5">
+              <div class="col-md-10 col-sm-12 col-xs-12">
+                <h2>
+                  <center>Pengeditan Data</center>
+                </h2>
 
-            <form method="post" name="edit">
-              <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Nama Barang..." value='<?php echo $d['nama'] ?>' name='nama' required>
-                </div>
-                <div class="col">
-                  <select class="form-control" name='jenis'  required>
-                    <option selected disabled value="">Jenis Barang</option>
-                     <option value="Makanan">Makanan</option>
-                      <option value="Minuman">Minuman</option>
-                       <option value="Lainnya">Lainnya</option>
-                  </select>
-                </div>
+                <form method="post" name="edit">
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Nama Barang..." value='<?php echo $d['nama'] ?>' name='nama' required>
+                    </div>
+                    <div class="col">
+                      <select class="form-control" name='jenis' required>
+                        <option selected disabled value="">Jenis Barang</option>
+                        <option value="Makanan">Makanan</option>
+                        <option value="Minuman">Minuman</option>
+                        <option value="Lainnya">Lainnya</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mt-4">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Suplier..." value='<?php echo $d['suplier'] ?>' name='suplier' required>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Harga Unit..." value='<?php echo $d['hargaU'] ?>' name='hargaU' required>
+                    </div>
+                  </div>
+                  <div class="row mt-4">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Harga Jual..." value='<?php echo $d['hargaJ'] ?>' name='hargaJ' required>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Jumlah Barang..." value='<?php echo $d['JumlahB'] ?>' name='JumlahB' required>
+                    </div>
+                  </div>
+
+                  <div class="row mt-5 ml-5">
+                    <div class="col-md-10 col-sm-12 col-xs-12 ml-5">
+                      <button type="submit" class="btn btn-info btn-lg btn-block" name='edit'>Update</button>
+
+                </form>
+
               </div>
-              <div class="row mt-4">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Suplier..." value='<?php echo $d['suplier'] ?>' name='suplier' required>
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Harga Unit..." value='<?php echo $d['hargaU'] ?>' name='hargaU' required>
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Harga Jual..." value='<?php echo $d['hargaJ'] ?>' name='hargaJ' required>
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Jumlah Barang..." value='<?php echo $d['JumlahB'] ?>' name='JumlahB' required>
-                </div>
-              </div>
-
-  <div class="row mt-5 ml-5">
-                <div class="col-md-10 col-sm-12 col-xs-12 ml-5">
-            <button type="submit" class="btn btn-info btn-lg btn-block" name='edit'>Update</button>
-
-              </form>
-
-              </div>
-
-<?php
-
-}
-}
-?>
-          </div>
-
 
           <?php
 
-            if(isset($_POST['edit'])){
+          }
+        }
+          ?>
+            </div>
+
+
+            <?php
+
+            if (isset($_POST['edit'])) {
 
 
 
 
-           $edit = mysqli_query($conn, "UPDATE masuk SET
-          nama ='".$_POST['nama']."',
-         jenis ='".$_POST['jenis']."',
-          suplier ='".$_POST['suplier']."',
-          hargaU ='".$_POST['hargaU']."',
-          hargaJ ='".$_POST['hargaJ']."',
-          JumlahB ='".$_POST['JumlahB']."'
-          WHERE id ='".$_GET['id']."'
+              $edit = mysqli_query($conn, "UPDATE masuk SET
+          nama ='" . $_POST['nama'] . "',
+         jenis ='" . $_POST['jenis'] . "',
+          suplier ='" . $_POST['suplier'] . "',
+          hargaU ='" . $_POST['hargaU'] . "',
+          hargaJ ='" . $_POST['hargaJ'] . "',
+          JumlahB ='" . $_POST['JumlahB'] . "'
+          WHERE id ='" . $_GET['id'] . "'
               ");
 
-            if($edit){
-              header("location: Data.php");
-            }else{
+              if ($edit) {
+                header("location: Data.php");
+              } else {
 
 
-                              echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-                                 echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-                                echo "<p><center>Mengedit Data Gagal</center></p>";
-                                 echo   "</div>";
-                                 echo "</div>";
-
+                echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+                echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+                echo "<p><center>Mengedit Data Gagal</center></p>";
+                echo   "</div>";
+                echo "</div>";
+              }
             }
 
-            }
 
 
-
-?>
-
+            ?>
 
 
 
@@ -295,67 +290,68 @@ ob_start()
 
 
 
-</div>
-</div>
 
-</div>
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-  <div class="container my-auto">
-    <div class="copyright text-center my-auto">
-      <span><p class="mb-1">Copyright &copy; <a href="https://github.com/Faiznurullah" style="text-decoration: none;"><b>Faiz Nurullah</b></a></p></span><br>
+      </div>
+    </div>
+
+  </div>
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <p class="mb-1">Copyright &copy; <a href="https://github.com/FrindiM" style="text-decoration: none;"><b>Frindi Mangimbulude</b></a></p>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  </div>
+
+
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-primary" href="logout.php">Keluar</a>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
-</div>
 
-</div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
-                <!-- Scroll to Top Button-->
-                <a class="scroll-to-top rounded" href="#page-top">
-                  <i class="fas fa-angle-up"></i>
-                </a>
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
 
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
-                      <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                        <a class="btn btn-primary" href="logout.php">Keluar</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+</body>
 
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
-
-                <!-- Page level plugins -->
-                <script src="vendor/chart.js/Chart.min.js"></script>
-
-                <!-- Page level custom scripts -->
-                <script src="js/demo/chart-area-demo.js"></script>
-                <script src="js/demo/chart-pie-demo.js"></script>
-
-              </body>
-
-              </html>
+</html>
 <?php ob_end_flush() ?>

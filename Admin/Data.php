@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-if($_SESSION['password']=='')
-{
-    header("location:login.php");
+if ($_SESSION['password'] == '') {
+  header("location:login.php");
 }
 include 'koneksi.php';
 error_reporting(0);
- ?>
+?>
 <!doctype html>
 <html lang="en">
 
@@ -107,8 +106,8 @@ error_reporting(0);
 
 
             <?php
-                        $nama = mysqli_query($conn, "select * from about");
-                        $profile = mysqli_fetch_array($nama);
+            $nama = mysqli_query($conn, "select * from about");
+            $profile = mysqli_fetch_array($nama);
             ?>
 
 
@@ -120,14 +119,14 @@ error_reporting(0);
             $rrr = mysqli_fetch_array($sss);
 
 
-             ?>
+            ?>
 
             <!-- Nav Item - User Information -->
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profile['nama'] ?></span>
-                <img class="img-profile rounded-circle" src=" penampung/<?php echo$profile['foto'] ?>" alt="Profile"  width="100px" height="100px">
+                <img class="img-profile rounded-circle" src=" penampung/<?php echo $profile['foto'] ?>" alt="Profile" width="100px" height="100px">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -141,7 +140,7 @@ error_reporting(0);
                 </a>
                 <a class="dropdown-item" href="change.php?id=<?php echo $rrr['id']; ?>">
                   <i class="fas fa-ruler-horizontal fa-sm fa-fw mr-2 text-gray-400"></i>
-                Ganti Password
+                  Ganti Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
@@ -150,134 +149,132 @@ error_reporting(0);
                 </a>
               </div>
             </li>
-            </ul>
+          </ul>
 
         </nav>
         <!-- End of Topbar -->
 
 
-<!--ini bagian konten-->
-  <form name='kirim' method='post'>
-<div class="row">
+        <!--ini bagian konten-->
+        <form name='kirim' method='post'>
+          <div class="row">
 
-  <div class="col-md-1">
+            <div class="col-md-1">
 
-  </div>
+            </div>
 
- <div class="col-md-5 col-sm-12 col-xs-12">
-   <p><b>Nama Barang:</b></p>
-<input class="form-control" type="text" placeholder="Nama Barang..." name='nama_b' required>
-</div>
-
-
- <div class="col-md-5 col-sm-12 col-xs-12">
-   <p><b>Jenis:</b></p>
-   <select class="form-control" name='jenis' required>
-     <option selected disabled value="">Jenis Barang...</option>
-      <option value="Makanan">Makanan</option>
-       <option value="Minuman">Minuman</option>
-        <option value="Lainnya">Lainnya</option>
-   </select>
-</div>
-
-</div>
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <p><b>Nama Barang:</b></p>
+              <input class="form-control" type="text" placeholder="Nama Barang..." name='nama_b' required>
+            </div>
 
 
-<div class="row">
-  <div class="col-md-1">
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <p><b>Jenis:</b></p>
+              <select class="form-control" name='jenis' required>
+                <option selected disabled value="">Jenis Barang...</option>
+                <option value="Makanan">Makanan</option>
+                <option value="Minuman">Minuman</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
 
-  </div>
-
- <div class="col-md-5 col-sm-12 col-xs-12">
-   <p><b>Suplier:</b></p>
-<input class="form-control" type="text" placeholder="Suplier..." name='suplier' required>
-</div>
-
-
- <div class="col-md-5 col-sm-12 col-xs-12">
-   <p><b>Harga Modal Per Unit:</b></p>
-   <input class="form-control" type="number" placeholder="Harga Modal..." name='modal' required>
-   </select>
-</div>
-
-</div>
+          </div>
 
 
+          <div class="row">
+            <div class="col-md-1">
+
+            </div>
+
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <p><b>Suplier:</b></p>
+              <input class="form-control" type="text" placeholder="Suplier..." name='suplier' required>
+            </div>
 
 
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <p><b>Harga Modal Per Unit:</b></p>
+              <input class="form-control" type="number" placeholder="Harga Modal..." name='modal' required>
+              </select>
+            </div>
 
-<div class="row">
-  <div class="col-md-1">
-
-  </div>
-
- <div class="col-md-5 col-sm-12 col-xs-12">
-   <p><b>Harga Jual:</b></p>
-<input class="form-control" type="number" placeholder="Harga Jual..." name='jual' required>
-</div>
-
-
- <div class="col-md-5 col-sm-12 col-xs-12">
-   <p><b>Jumlah Barang:</b></p>
-   <input class="form-control" type="number" placeholder="Jumlah Barang..." name='jumlah' required>
-   </select>
-</div>
-
-</div>
-
-
-<div class="row mt-3">
-  <div class="col-md-1">
-
-  </div>
-
-  <div class="col-md-10 col-sm-12 col-xs-12">
-<button type="submit" class="btn btn-primary btn-lg btn-block" name='kirim'>Kirim</button>
-
-</form>
-
-</div>
+          </div>
 
 
 
 
 
-<?php
-if(isset($_POST['kirim'])){
-  $nama = htmlspecialchars($_POST['nama_b']);
-  $jenis = htmlspecialchars($_POST['jenis']);
-  $suplier = htmlspecialchars($_POST['suplier']);
-  $modal = htmlspecialchars($_POST['modal']);
-  $jual = htmlspecialchars($_POST['jual']);
-  $jumlah = htmlspecialchars($_POST['jumlah']);
-  $modald = $modal * $jumlah;
+          <div class="row">
+            <div class="col-md-1">
+
+            </div>
+
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <p><b>Harga Jual:</b></p>
+              <input class="form-control" type="number" placeholder="Harga Jual..." name='jual' required>
+            </div>
+
+
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <p><b>Jumlah Barang:</b></p>
+              <input class="form-control" type="number" placeholder="Jumlah Barang..." name='jumlah' required>
+              </select>
+            </div>
+
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-1">
+
+            </div>
+
+            <div class="col-md-10 col-sm-12 col-xs-12">
+              <button type="submit" class="btn btn-primary btn-lg btn-block" name='kirim'>Kirim</button>
+
+        </form>
+
+      </div>
 
 
 
 
 
-   $wet =mysqli_query($conn, "select * from masuk where nama ='$nama' and jenis ='$jenis' and suplier ='$suplier'");
-   $chak = mysqli_num_rows($wet);
-   if($chak > 0){
+      <?php
+      if (isset($_POST['kirim'])) {
+        $nama = htmlspecialchars($_POST['nama_b']);
+        $jenis = htmlspecialchars($_POST['jenis']);
+        $suplier = htmlspecialchars($_POST['suplier']);
+        $modal = htmlspecialchars($_POST['modal']);
+        $jual = htmlspecialchars($_POST['jual']);
+        $jumlah = htmlspecialchars($_POST['jumlah']);
+        $modald = $modal * $jumlah;
 
-     $rew = mysqli_fetch_array($wet);
-     $nama === $rew['nama'];
-     $jenis === $rew['jenis'];
-     $suplier === $rew['suplier'];
 
 
 
-     echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-           echo "<div class='alert alert-warning mt-4 ml-5' role='alert'>";
+
+        $wet = mysqli_query($conn, "select * from masuk where nama ='$nama' and jenis ='$jenis' and suplier ='$suplier'");
+        $chak = mysqli_num_rows($wet);
+        if ($chak > 0) {
+
+          $rew = mysqli_fetch_array($wet);
+          $nama === $rew['nama'];
+          $jenis === $rew['jenis'];
+          $suplier === $rew['suplier'];
+
+
+
+          echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+          echo "<div class='alert alert-warning mt-4 ml-5' role='alert'>";
           echo "<p><center>Data Yang Anda Kirim Sudah Tersedia</center></p>";
-           echo   "</div>";
-           echo "</div>";
+          echo   "</div>";
+          echo "</div>";
+        } else {
 
 
-   }else{
-
-
-       $insert = mysqli_query($conn, "INSERT INTO masuk VALUES (
+          $insert = mysqli_query($conn, "INSERT INTO masuk VALUES (
         NULL,
        '$nama',
        '$jenis',
@@ -287,350 +284,336 @@ if(isset($_POST['kirim'])){
        '$jumlah'
          )");
 
-         $insert_1 = mysqli_query($conn, "INSERT INTO modal VALUES (
+          $insert_1 = mysqli_query($conn, "INSERT INTO modal VALUES (
           NULL,
           '$modald'
         )");
 
 
 
-        if($insert && $insert_1){
+          if ($insert && $insert_1) {
 
-     echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-        echo "<div class='alert alert-primary mt-4 ml-5' role='alert'>";
-       echo "<p><center>Menambakan Data Sukses</center></p>";
-        echo   "</div>";
-        echo "</div>";
+            echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+            echo "<div class='alert alert-primary mt-4 ml-5' role='alert'>";
+            echo "<p><center>Menambakan Data Sukses</center></p>";
+            echo   "</div>";
+            echo "</div>";
+          } else {
 
-      }else{
-
-        echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-           echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-          echo "<p><center>Menambakan Data Gagal</center></p>";
-           echo   "</div>";
-           echo "</div>";
-
-
+            echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+            echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+            echo "<p><center>Menambakan Data Gagal</center></p>";
+            echo   "</div>";
+            echo "</div>";
+          }
+        }
       }
-
-   }
-
-
-
-
- }
- ?>
+      ?>
 
 
 
 
 
 
-<div class="col-md-1">
+      <div class="col-md-1">
 
-</div>
+      </div>
 
-</div>
+    </div>
 
-<?php
-$jumlah_produk=mysqli_query($conn,"SELECT COUNT(*) as id from masuk");
-$row = mysqli_fetch_array($jumlah_produk);
-$jum = $row['id'];
-
-
-?>
-
-<?php
-
-  $Jumlah_modal=mysqli_query($conn, "select sum(jumlah_modal) as total from modal");
-  $total=mysqli_fetch_array($Jumlah_modal);
+    <?php
+    $jumlah_produk = mysqli_query($conn, "SELECT COUNT(*) as id from masuk");
+    $row = mysqli_fetch_array($jumlah_produk);
+    $jum = $row['id'];
 
 
-?>
+    ?>
 
-<?php
+    <?php
 
-  $Jumlah_pemasukan=mysqli_query($conn, "select sum(hargaJ * JumlahB) as dari from masuk");
-  $pemasukan=mysqli_fetch_array($Jumlah_pemasukan);
-
-
-?>
+    $Jumlah_modal = mysqli_query($conn, "select sum(jumlah_modal) as total from modal");
+    $total = mysqli_fetch_array($Jumlah_modal);
 
 
-<?php
+    ?>
 
-  $Jumlah_B=mysqli_query($conn, "select sum(JumlahB) as jumlah from masuk");
-  $jumlahB=mysqli_fetch_array($Jumlah_B);
+    <?php
 
-
-    $Jumlah_y=mysqli_query($conn, "select sum(hargaU) as tor from keluar");
-    $jumlahd=mysqli_fetch_array($Jumlah_y);
+    $Jumlah_pemasukan = mysqli_query($conn, "select sum(hargaJ * JumlahB) as dari from masuk");
+    $pemasukan = mysqli_fetch_array($Jumlah_pemasukan);
 
 
-?>
+    ?>
 
 
-<?php
+    <?php
 
-$untung = ($jumlahd['tor']) - ($total['total']);
+    $Jumlah_B = mysqli_query($conn, "select sum(JumlahB) as jumlah from masuk");
+    $jumlahB = mysqli_fetch_array($Jumlah_B);
 
-?>
+
+    $Jumlah_y = mysqli_query($conn, "select sum(hargaU) as tor from keluar");
+    $jumlahd = mysqli_fetch_array($Jumlah_y);
 
 
-<div class="row">
-<div class="col-md-8  mt-4">
-<h2><center> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Data Produk Warung Kita</center></h2>
-</div>
-</div>
+    ?>
 
-<p class="ml-5">Jumlah Modal:<?php   echo "<b> Rp.". number_format($total['total']).",-</b>";  ?></p>
-<p class="ml-5">Jumlah Produk: &nbsp; <?php echo "$jum"; ?></p>
-<p class="ml-5">Jumlah Barang: &nbsp; <?php echo "". number_format($jumlahB['jumlah'])."&nbsp; Barang"; ?></p>
-<p class="ml-5">Keuntungan Dagang: &nbsp; <?php echo "Rp.". number_format($jumlahd['tor']).""."-"."Rp.". number_format($total['total']).""; ?></p>
-<p class="ml-5">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Total: <?php echo "<b> Rp.".number_format($untung).""; ?></p>
 
-  <div class="card shadow  ml-4 mr-4">
-<div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+    <?php
+
+    $untung = ($jumlahd['tor']) - ($total['total']);
+
+    ?>
+
+
+    <div class="row">
+      <div class="col-md-8  mt-4">
+        <h2>
+          <center> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Data Produk Warung Kita</center>
+        </h2>
+      </div>
+    </div>
+
+    <p class="ml-5">Jumlah Modal:<?php echo "<b> Rp." . number_format($total['total']) . ",-</b>";  ?></p>
+    <p class="ml-5">Jumlah Produk: &nbsp; <?php echo "$jum"; ?></p>
+    <p class="ml-5">Jumlah Barang: &nbsp; <?php echo "" . number_format($jumlahB['jumlah']) . "&nbsp; Barang"; ?></p>
+    <p class="ml-5">Keuntungan Dagang: &nbsp; <?php echo "Rp." . number_format($jumlahd['tor']) . "" . "-" . "Rp." . number_format($total['total']) . ""; ?></p>
+    <p class="ml-5">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Total: <?php echo "<b> Rp." . number_format($untung) . ""; ?></p>
+
+    <div class="card shadow  ml-4 mr-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+      </div>
+
+
+
+
+      <div class="row mt-3">
+
+
+        <div class="col-md-8  mt-4">
+          <br>
+
+
+
+        </div>
+
+        <div class="col-md-4 mt-5">
+          <form class="form-inline my-2 my-lg-0" action="cari.php" method="get" name='cari'>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='cari' required>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-8  mt-4">
+
+        </div>
+      </div>
+      <?php
+
+      $hmm = $jum;
+      $hal = 10;
+      $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+      $start = ($page - 1) * $hal;
+
+
+      ?>
+
+
+      <div class="col-md-12 col-sm-12 col-xs-12  mt-5">
+        <div class="table-responsive service">
+          <table class="table table-bordered table-hover  mt-3 text-nowrap css-serial">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama Produk</th>
+                <th scope="col">Suplier</th>
+                <th scope="col">Harga/Unit</th>
+                <th scope="col">Jumlah Barang</th>
+                <th scope="col">Opsi</th>
+
+              </tr>
+
+            </thead>
+            <?php
+            if (isset($_GET['cari'])) {
+              $cari = mysqli_real_escape_string($conn, $_GET['cari']);
+              $brg = mysqli_query($conn, "select * from masuk where id like '%" . $cari . "%' or nama like '%" . $cari . "%' or jenis like '%" . $cari . "%' ");
+
+              if (mysqli_num_rows($brg) > 0) {
+                echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+                echo "<div class='alert alert-primary mt-4 ml-5' role='alert'>";
+                echo "<p><center>Data Yang Anda Cari  Ditemukan</center></p>";
+                echo   "</div>";
+                echo "</div>";
+              } else {
+
+                echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+                echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+                echo "<p><center>$cari Yang Anda Cari Tidak Ditemukan</center></p>";
+                echo   "</div>";
+                echo "</div>";
+              }
+            } else {
+              $brg = mysqli_query($conn, "select * from masuk limit $start, $hal");
+            }
+
+
+
+
+            if (mysqli_num_rows($brg)) {
+
+
+
+
+
+              while ($row = mysqli_fetch_array($brg)) {
+
+
+            ?>
+                <tbody>
+                  <tr>
+                    <th scope="row"><?php echo $row['id'] ?></th>
+                    <td><?php echo $row['nama'] ?></td>
+                    <td><?php echo $row['suplier'] ?></td>
+                    <td><?php echo $row['hargaU'] ?></td>
+                    <td><?php echo $row['JumlahB'] ?></td>
+                    <td>&nbsp;<a href="edit.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-success">Edit</button></a> &nbsp; <a href="hapus.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-danger">Hapus</button></a> &nbsp; <a href="detail.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-info">Detail</button></a></td>
+
+                  </tr>
+
+                </tbody>
+
+            <?php }
+            } elseif (mysqli_num_rows($brg) <= 0 and !$cari) {
+
+
+              echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
+              echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+              echo "<p><center>Data Anda Masih Kosong</center></p>";
+              echo "</div>";
+              echo "</div>";
+            } ?>
+
+
+          </table>
+
+          <div class="row">
+            <div class="col-md-5">
+
+            </div>
+
+            <div class="col-md-5">
+
+            </div>
+            <?php
+            $cep = mysqli_query($conn, "select * from masuk");
+            $tesd = mysqli_num_rows($cep);
+
+
+            if ($tesd > 0) {
+              echo "<div class='col-md-2'>";
+              echo " <a href='hapus_all_modal.php'><button type='button' class='btn btn-danger'>Hapus Semua</button></a>";
+              echo "</div>";
+            } else {
+            } ?>
+
+          </div>
+
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <?php
+              for ($x = 1; $x <= $hal; $x++) {
+              ?>
+                <li class="page-item"><a class="page-link" href="?page=<?php echo $x ?>"><?php echo $x ?></a></li>
+              <?php
+              }
+
+              ?>
+
+
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>
+          <p class="mb-1">Copyright &copy; <a href="https://github.com/FrindiM" style="text-decoration: none;"><b>Frindi Mangimbulude</b></a></p>
+        </span><br>
+      </div>
+    </div>
+  </footer>
   </div>
 
 
 
 
-<div class="row mt-3">
-
-
-<div class="col-md-8  mt-4">
-<br>
-
-
-
-</div>
-
-<div class="col-md-4 mt-5">
-  <form class="form-inline my-2 my-lg-0" action="cari.php" method="get" name='cari'>
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='cari'  required>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-</div>
-
-</div>
-
-<div class="row">
-  <div class="col-md-8  mt-4">
-
-</div>
-</div>
-<?php
-
-$hmm= $jum;
-$hal= 10;
-$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
-$start = ($page - 1) * $hal;
-
-
- ?>
-
-
-<div class="col-md-12 col-sm-12 col-xs-12  mt-5">
-  <div class="table-responsive service">
-  <table class="table table-bordered table-hover  mt-3 text-nowrap css-serial">
-  <thead>
-    <tr>
-      <th scope="col">No</th>
-      <th scope="col">Nama Produk</th>
-      <th scope="col">Suplier</th>
-      <th scope="col">Harga/Unit</th>
-      <th scope="col">Jumlah Barang</th>
-      <th scope="col">Opsi</th>
-
-    </tr>
-
-  </thead>
-  <?php
-  if(isset($_GET['cari'])){
-		$cari=mysqli_real_escape_string($conn, $_GET['cari']);
-    $brg=mysqli_query($conn, "select * from masuk where id like '%".$cari."%' or nama like '%".$cari."%' or jenis like '%".$cari."%' ");
-
-if(mysqli_num_rows($brg) > 0){
-        echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-        echo "<div class='alert alert-primary mt-4 ml-5' role='alert'>";
-        echo "<p><center>Data Yang Anda Cari  Ditemukan</center></p>";
-        echo   "</div>";
-        echo "</div>";
-
-}else{
-
-      echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-      echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-      echo "<p><center>$cari Yang Anda Cari Tidak Ditemukan</center></p>";
-      echo   "</div>";
-      echo "</div>";
-
-
-}
-
-
-
-
-	}else{
-		$brg=mysqli_query($conn, "select * from masuk limit $start, $hal");
-	}
-
-
-
-
-if(mysqli_num_rows($brg)){
-
-
-
-
-
-     while($row = mysqli_fetch_array($brg)){
-
-
-     ?>
-  <tbody>
-    <tr>
-      <th scope="row"><?php echo $row['id'] ?></th>
-      <td><?php echo $row['nama'] ?></td>
-      <td><?php echo $row['suplier'] ?></td>
-      <td><?php echo $row['hargaU'] ?></td>
-      <td><?php echo $row['JumlahB'] ?></td>
-      <td>&nbsp;<a href="edit.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-success">Edit</button></a> &nbsp; <a href="hapus.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-danger">Hapus</button></a> &nbsp; <a href="detail.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-info">Detail</button></a></td>
-
-    </tr>
-
-  </tbody>
-
-<?php }}elseif(mysqli_num_rows($brg) <= 0 AND !$cari){
-
-
-        echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5'>";
-        echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-        echo "<p><center>Data Anda Masih Kosong</center></p>";
-        echo "</div>";
-        echo "</div>";
-
-
-} ?>
-
-
-</table>
-
-<div class="row">
-    <div class="col-md-5">
-
-    </div>
-
-    <div class="col-md-5">
-
-    </div>
-    <?php
-   $cep = mysqli_query($conn, "select * from masuk");
-   $tesd= mysqli_num_rows($cep);
-
-
-   if($tesd > 0 ){
-   echo "<div class='col-md-2'>";
-   echo " <a href='hapus_all_modal.php'><button type='button' class='btn btn-danger'>Hapus Semua</button></a>";
-    echo "</div>";
-   }else{
-
-
-   }?>
-
-</div>
-
-
-<nav aria-label="Page navigation example">
-<ul class="pagination">
-  <?php
-  for($x=1;$x<=$hal ;$x++){
-    ?>
-    <li class="page-item"><a class="page-link" href="?page=<?php echo $x ?>"><?php echo $x ?></a></li>
-    <?php
-  }
-
-  ?>
-
-
-
-</ul>
-</nav>
-</div>
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-      </div>
-      <!-- End of Content Wrapper -->
-
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span><p class="mb-1">Copyright &copy; <a href="https://github.com/Faiznurullah" style="text-decoration: none;"><b>Faiz Nurullah</b></a></p></span><br>
-          </div>
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
         </div>
-      </footer>
-      </div>
-
-
-
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-primary" href="logout.php">Keluar</a>
-          </div>
+        <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-primary" href="logout.php">Keluar</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
 
-  </body>
+</body>
 
-  </html>
+</html>

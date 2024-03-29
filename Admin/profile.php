@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-if($_SESSION['password']=='')
-{
-    header("location:login.php");
+if ($_SESSION['password'] == '') {
+  header("location:login.php");
 }
 include 'koneksi.php';
-            $nama = mysqli_query($conn, "select * from about");
-            $profile = mysqli_fetch_array($nama);
+$nama = mysqli_query($conn, "select * from about");
+$profile = mysqli_fetch_array($nama);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,18 +110,18 @@ include 'koneksi.php';
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <?php
-   $sss = mysqli_query($conn, "select * from admin");
-   $rrr = mysqli_fetch_array($sss);
+            $sss = mysqli_query($conn, "select * from admin");
+            $rrr = mysqli_fetch_array($sss);
 
 
-             ?>
+            ?>
 
             <!-- Nav Item - User Information -->
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profile['nama'] ?></span>
-                <img class="img-profile rounded-circle" src=" penampung/<?php echo $profile['foto'] ?>" alt="Profile"  width="100px" height="100px">
+                <img class="img-profile rounded-circle" src=" penampung/<?php echo $profile['foto'] ?>" alt="Profile" width="100px" height="100px">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -136,7 +135,7 @@ include 'koneksi.php';
                 </a>
                 <a class="dropdown-item" href="change.php?id=<?php echo $rrr['id']; ?>">
                   <i class="fas fa-ruler-horizontal fa-sm fa-fw mr-2 text-gray-400"></i>
-                Ganti Password
+                  Ganti Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
@@ -152,95 +151,97 @@ include 'koneksi.php';
 
 
         <div class="card shadow  ml-4 mr-4 mt-4 mb-4">
-        <div class="card-header py-3">
-        <h1 class="h3 mb-0 text-gray-800">Profile</h1>
-        </div>
+          <div class="card-header py-3">
+            <h1 class="h3 mb-0 text-gray-800">Profile</h1>
+          </div>
 
-<div class="row ml-5 mb-2">
+          <div class="row ml-5 mb-2">
 
-<div class="col-md-4">
+            <div class="col-md-4">
 
-</div>
-
-
-<div class="col-md-4">
-<center><img class="img-profile rounded-circle" src="penampung/<?php echo $profile['foto'] ?>" alt="Gambar Profile" width="150px" height="150px"></center>
-<p><b><center><?php echo $profile['nama'] ?></center></b></p>
-</div>
-
-
-<div class="col-md-4">
-
-</div>
-
-</div>
-
-
-
-
-
-</div>
-</div>
-
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-  <div class="container my-auto">
-    <div class="copyright text-center my-auto">
-      <span><p class="mb-1">Copyright &copy; <a href="https://github.com/Faiznurullah" style="text-decoration: none;"><b>Faiz Nurullah</b></a></p></span><br>
-    </div>
-  </div>
-</footer>
-</div>
-<!-- End of Content Wrapper -->
-
-</div>
-
-
-
-
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="logout.php">Keluar</a>
-              </div>
             </div>
+
+
+            <div class="col-md-4">
+              <center><img class="img-profile rounded-circle" src="penampung/<?php echo $profile['foto'] ?>" alt="Gambar Profile" width="150px" height="150px"></center>
+              <p><b>
+                  <center><?php echo $profile['nama'] ?></center>
+                </b></p>
+            </div>
+
+
+            <div class="col-md-4">
+
+            </div>
+
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <p class="mb-1">Copyright &copy; <a href="https://github.com/FrindiM" style="text-decoration: none;"><b>Frindi Mangimbulude</b></a></p>
           </div>
         </div>
+      </footer>
+    </div>
+    <!-- End of Content Wrapper -->
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
 
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
 
-        <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
 
-        </body>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
-        </html>
-        <?php ob_end_flush() ?>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-primary" href="logout.php">Keluar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
+<?php ob_end_flush() ?>

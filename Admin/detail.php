@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-if($_SESSION['password']=='')
-{
-    header("location:login.php");
+if ($_SESSION['password'] == '') {
+  header("location:login.php");
 }
 include 'koneksi.php';
 error_reporting(0);
- ?>
+?>
 <!doctype html>
 <html lang="en">
 
@@ -127,8 +126,8 @@ error_reporting(0);
 
 
             <?php
-                        $nama = mysqli_query($conn, "select * from about");
-                        $profile = mysqli_fetch_array($nama);
+            $nama = mysqli_query($conn, "select * from about");
+            $profile = mysqli_fetch_array($nama);
             ?>
 
 
@@ -136,18 +135,18 @@ error_reporting(0);
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <?php
-   $sss = mysqli_query($conn, "select * from admin");
-   $rrr = mysqli_fetch_array($sss);
+            $sss = mysqli_query($conn, "select * from admin");
+            $rrr = mysqli_fetch_array($sss);
 
 
-             ?>
+            ?>
 
             <!-- Nav Item - User Information -->
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profile['nama'] ?></span>
-                <img class="img-profile rounded-circle" src=" penampung/<?php echo$profile['foto'] ?>" alt="Profile"  width="100px" height="100px">
+                <img class="img-profile rounded-circle" src=" penampung/<?php echo $profile['foto'] ?>" alt="Profile" width="100px" height="100px">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -161,7 +160,7 @@ error_reporting(0);
                 </a>
                 <a class="dropdown-item" href="change.php?id=<?php echo $rrr['id']; ?>">
                   <i class="fas fa-ruler-horizontal fa-sm fa-fw mr-2 text-gray-400"></i>
-                Ganti Password
+                  Ganti Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
@@ -178,148 +177,150 @@ error_reporting(0);
 
         <?php
 
-        $id_brg= ($_GET['id']);
+        $id_brg = ($_GET['id']);
         $ggl = !$id_brg;
 
-        if($ggl){
+        if ($ggl) {
 
-            echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5 mt-5'>";
-               echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
-              echo "<p><center>Maaf Data Ini Tidak Tersedia</center></p>";
-               echo   "</div>";
-               echo "</div>";
+          echo "<div class='col-md-10 col-sm-12 col-xs-12 ml-5 mt-5'>";
+          echo "<div class='alert alert-danger mt-4 ml-5' role='alert'>";
+          echo "<p><center>Maaf Data Ini Tidak Tersedia</center></p>";
+          echo   "</div>";
+          echo "</div>";
+        } else {
+          $det = mysqli_query($conn, "select * from masuk where id='$id_brg'") or die(mysql_error());
+          while ($d = mysqli_fetch_array($det)) {
+        ?>
 
-        }  else{
-          $det=mysqli_query($conn, "select * from masuk where id='$id_brg'")or die(mysql_error());
-          while($d=mysqli_fetch_array($det)){
+            <?php
+            $modal = $d['hargaU'] * $d['JumlahB'];
             ?>
 
-<?php
- $modal = $d['hargaU'] * $d['JumlahB'];
- ?>
 
-
-<div class="row ml-5">
-  <div class="col-md-10 col-sm-12 col-xs-12">
-    <h2><center>Info Detail Produk</center></h2>
-	<table class="table">
-
-
-
-    <tr>
-      <td>Nama</td>
-      <td><?php echo $d['nama']; ?></td>
-    </tr>
-
-    <tr>
-      <td>Jenis</td>
-      <td><?php echo $d['jenis']; ?></td>
-    </tr>
-
-    <tr>
-      <td>Suplier</td>
-      <td><?php echo $d['suplier']; ?></td>
-    </tr>
-
-
-    <tr>
-      <td>Harga/Unit</td>
-      <td><?php echo $d['hargaU']; ?></td>
-    </tr>
-
-    <tr>
-      <td>Harga Jual</td>
-      <td><?php echo $d['hargaJ']; ?></td>
-    </tr>
-
-    <tr>
-      <td>Jumlah Barang</td>
-      <td><?php echo $d['JumlahB']; ?></td>
-    </tr>
-
-    <tr>
-      <td>Modal</td>
-      <td><?php echo  "Rp.".number_format($modal).""; ?></td>
-    </tr>
-
-
-</table>
-</div>
-</div>
-<?php
-}}
- ?>
-
-<div class="row">
-<div class="col-md-9">
-
-</div>
-<div class="col-md-3">
-<a href="Data.php"><button type="button" class="btn btn-info">Kembali Lagi</button></a>
-</div>
+            <div class="row ml-5">
+              <div class="col-md-10 col-sm-12 col-xs-12">
+                <h2>
+                  <center>Info Detail Produk</center>
+                </h2>
+                <table class="table">
 
 
 
+                  <tr>
+                    <td>Nama</td>
+                    <td><?php echo $d['nama']; ?></td>
+                  </tr>
+
+                  <tr>
+                    <td>Jenis</td>
+                    <td><?php echo $d['jenis']; ?></td>
+                  </tr>
+
+                  <tr>
+                    <td>Suplier</td>
+                    <td><?php echo $d['suplier']; ?></td>
+                  </tr>
 
 
-</div>
+                  <tr>
+                    <td>Harga/Unit</td>
+                    <td><?php echo $d['hargaU']; ?></td>
+                  </tr>
 
-</div>
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-  <div class="container my-auto">
-    <div class="copyright text-center my-auto">
-      <span><p class="mb-1">Copyright &copy; <a href="https://github.com/Faiznurullah" style="text-decoration: none;"><b>Faiz Nurullah</b></a></p></span><br>
-    </div>
-  </div>
-</footer>
-</div>
+                  <tr>
+                    <td>Harga Jual</td>
+                    <td><?php echo $d['hargaJ']; ?></td>
+                  </tr>
+
+                  <tr>
+                    <td>Jumlah Barang</td>
+                    <td><?php echo $d['JumlahB']; ?></td>
+                  </tr>
+
+                  <tr>
+                    <td>Modal</td>
+                    <td><?php echo  "Rp." . number_format($modal) . ""; ?></td>
+                  </tr>
 
 
-</div>
-
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-          <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="logout.php">Keluar</a>
+                </table>
               </div>
             </div>
+        <?php
+          }
+        }
+        ?>
+
+        <div class="row">
+          <div class="col-md-9">
+
           </div>
+          <div class="col-md-3">
+            <a href="Data.php"><button type="button" class="btn btn-info">Kembali Lagi</button></a>
+          </div>
+
+
+
+
+
         </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <p class="mb-1">Copyright &copy; <a href="https://github.com/FrindiM" style="text-decoration: none;"><b>Frindi Mangimbulude</b></a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
 
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+  </div>
 
-        <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
-      </body>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin Mau Keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Jika Keluar Anda Harus Login Terlebih Dahulu !</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          <a class="btn btn-primary" href="logout.php">Keluar</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      </html>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
